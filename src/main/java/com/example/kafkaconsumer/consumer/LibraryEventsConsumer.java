@@ -26,14 +26,13 @@ public class LibraryEventsConsumer {
     @KafkaListener(topics = {"library-events"})
     public void onMessage(ConsumerRecord<Integer, String> consumerRecord) throws JsonProcessingException {
         var libraryEvent = objectMapper.readValue(consumerRecord.value(), LibraryEvent.class);
-        log.info("{}", libraryEvent.getBook().getBookAuthor());
-
+        log.info("{}", libraryEvent);
         switch (libraryEvent.getLibraryEventType()) {
             case NEW:
-                libraryEventsService.saveBook(libraryEvent.getBook());
+                libraryEventsService.saveLibraryEvent(libraryEvent);
                 break;
             case UPDATE:
-                libraryEventsService.updateBook(libraryEvent.getBook());
+                libraryEventsService.updateLibraryEvent(libraryEvent);
                 break;
         }
     }

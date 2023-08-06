@@ -1,12 +1,9 @@
 package com.example.kafkaconsumer.service;
 
-import com.example.kafkaconsumer.entity.Book;
-import org.springframework.stereotype.Service;
-
-
+import com.example.kafkaconsumer.entity.LibraryEvent;
 
 public interface LibraryEventsService {
-    Book saveBook(Book book);
+    LibraryEvent saveLibraryEvent(LibraryEvent libraryEvent);
 
-    Book updateBook(Book book);
+    LibraryEvent updateLibraryEvent(LibraryEvent libraryEvent);
 }

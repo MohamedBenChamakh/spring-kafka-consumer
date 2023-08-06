@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Getter
 @Setter
-@Entity(name = "book")
+@Entity
 public class Book {
 
     @Id

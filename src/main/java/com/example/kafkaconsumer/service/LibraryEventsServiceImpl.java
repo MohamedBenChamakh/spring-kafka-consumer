@@ -1,7 +1,7 @@
 package com.example.kafkaconsumer.service;
 
-import com.example.kafkaconsumer.entity.Book;
-import com.example.kafkaconsumer.repositoy.BookRepository;
+import com.example.kafkaconsumer.entity.LibraryEvent;
+import com.example.kafkaconsumer.repositoy.LibraryEventsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -9,27 +9,27 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class LibraryEventsServiceImpl implements LibraryEventsService {
 
-    BookRepository bookRepository;
+    LibraryEventsRepository libraryEventsRepository;
 
-    public LibraryEventsServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public LibraryEventsServiceImpl(LibraryEventsRepository libraryEventsRepository) {
+        this.libraryEventsRepository = libraryEventsRepository;
     }
 
     @Override
-    public Book saveBook(Book book){
-        if(bookRepository.existsById(book.getBookId())){
-            log.error("book already exists : {} ",book);
+    public LibraryEvent saveLibraryEvent(LibraryEvent libraryEvent){
+        if(libraryEventsRepository.existsById(libraryEvent.getLibraryEventId())){
+            log.error("library event already exists : {} ",libraryEvent);
             return null;
         }
-        return bookRepository.save(book);
+        return libraryEventsRepository.save(libraryEvent);
     }
 
     @Override
-    public Book updateBook(Book book){
-        if(!bookRepository.existsById(book.getBookId())){
-            log.error("book not found : {} ",book);
+    public LibraryEvent updateLibraryEvent(LibraryEvent libraryEvent){
+        if(!libraryEventsRepository.existsById(libraryEvent.getLibraryEventId())){
+            log.error("library event not found : {} ",libraryEvent);
             return null;
         }
-        return bookRepository.save(book);
+        return libraryEventsRepository.save(libraryEvent);
     }
 }

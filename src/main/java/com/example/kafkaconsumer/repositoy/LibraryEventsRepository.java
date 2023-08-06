@@ -1,9 +1,9 @@
 package com.example.kafkaconsumer.repositoy;
 
-import com.example.kafkaconsumer.entity.Book;
+import com.example.kafkaconsumer.entity.LibraryEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BookRepository extends JpaRepository<Book,Integer> {
+public interface LibraryEventsRepository extends JpaRepository<LibraryEvent,Integer> {
 }
